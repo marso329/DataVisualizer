@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -std=c++11 -g -O3 -DNDEBUG  -shared -Wl,-soname,libTemplate.so -o lib/libTemplate.so CMakeFiles/Template.dir/src/DataSet.cpp.o CMakeFiles/Template.dir/src/DataSets.cpp.o CMakeFiles/Template.dir/src/Plot.cpp.o CMakeFiles/Template.dir/src/DataVisualizer.cpp.o CMakeFiles/Template.dir/src/Basic2DLinePlot.cpp.o -lboost_system 
