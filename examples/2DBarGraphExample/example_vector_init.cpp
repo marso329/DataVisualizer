@@ -19,4 +19,10 @@ int main(){
 		std::cout<<(*plot)[0][i]<<std::endl;
 	}
 	std::cout<<std::endl;
+	(*plot)[0][3]=5.0;
+	for(std::size_t i=0;i<4;i++){
+			std::cout<<(*plot)[0][i]<<std::endl;
+		}
+		std::cout<<std::endl;
+
 }
