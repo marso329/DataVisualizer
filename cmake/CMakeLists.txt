@@ -22,3 +22,13 @@ target_link_libraries(DataVisualizer  ${MAIN_LINK_LIBS} )
 
 #Potentially install
 install(TARGETS DataVisualizer DESTINATION //usr/local/share/DataVisualizer)
+
+#-------------------------------------------------------------------
+#OpenGl renderer build
+
+file(GLOB SOURCESOPENGL "../src/Renderer_OpenGL.cpp" )
+
+add_library(RendererOpenGL SHARED ${SOURCESOPENGL})
+
+target_link_libraries(RendererOpenGL  ${MAIN_LINK_LIBS} )
+install(TARGETS RendererOpenGL DESTINATION //usr/local/share/DataVisualizer)

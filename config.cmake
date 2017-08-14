@@ -13,7 +13,7 @@ MACRO(SUBDIRLIST result curdir)
 ENDMACRO()
 
 #Main library links
-set ( MAIN_LINK_LIBS -lboost_system )
+set ( MAIN_LINK_LIBS -ldl )
 
 #Link against the main library and other libraries
 set ( PROJECT_LINK_LIBS DataVisualizer.so ${MAIN_LINK_LIBS} )
