@@ -10,18 +10,18 @@ public:
 	Renderer(): destroy_renderer(NULL){
 
 	}
-	~Renderer() {
+	virtual ~Renderer(){};
+	void set_deleter(destroy_t* deleter){
+		destroy_renderer=deleter;
+	};
+	void del(){
 		if(destroy_renderer!=NULL){
 			destroy_renderer(this);
 		}
 	}
-	;
-	void set_deleter(destroy_t* deleter){
-		destroy_renderer=deleter;
-	}
 protected:
-private:
 	destroy_t* destroy_renderer;
+private:
 };
 
 }

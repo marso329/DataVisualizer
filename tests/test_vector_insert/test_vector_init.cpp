@@ -11,13 +11,7 @@ int main(){
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(1, 2);
-	if(VC->init()){
-		std::cout<<"Init successful"<<std::endl;
-	}
-	else{
-		std::cout<<"Init failed"<<std::endl;
-		return 1;
-	}
+    assert(VC->init());
 	std::vector<float> data;
 	data.resize(256);
 	for(int i=0;i<256;i++){

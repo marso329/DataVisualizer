@@ -2,16 +2,29 @@
 #define DATAVISUALIZER_DATAVISUALIZER_HEADER
 #include "Basic2DLinePlot.h"
 #include "Renderer.h"
+#include "Plot.h"
+#include <memory>
+#include <vector>
 
 #include <dlfcn.h>
 namespace DataVisualizer {
 class DataVisualizer {
 public:
 	DataVisualizer();
+	~DataVisualizer();
 	bool init();
+	template <typename T>
+	void insert_plot(Plot<T>* plot){
+
+	}
 protected:
 private:
 	Renderer* _renderer;
+	bool init_opengl();
+	//std::unique_ptr<Plot*> test;
+	//std::vector<std::vector<std::unique_ptr<Plot>>> _plots;
+	std::size_t _columns;
+	std::size_t _rows;
 };
 }
 #endif
