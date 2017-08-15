@@ -19,7 +19,7 @@ set ( MAIN_LINK_LIBS -ldl )
 set ( PROJECT_LINK_LIBS DataVisualizer.so ${MAIN_LINK_LIBS} )
 
 #library folder to link against
-link_directories( ${CMAKE_SOURCE_DIR}/lib )
+link_directories( ${CMAKE_SOURCE_DIR}/lib ${CMAKE_SOURCE_DIR}/lib/vulkan )
 
 #Where to put library files
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)

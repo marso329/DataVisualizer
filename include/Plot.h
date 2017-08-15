@@ -1,11 +1,13 @@
 #ifndef DATAVISUALIZER_PLOT_HEADER
 #define DATAVISUALIZER_PLOT_HEADER
 #include "DataSets.h"
+#include <type_traits>
 
 namespace DataVisualizer {
 
 template<typename T>
 class Plot {
+	static_assert((std::is_integral<T>::value||std::is_floating_point<T>::value)&&!std::is_same<T, bool>::value, "T must inherit from list");
 public:
 	explicit Plot():_datasets(new DataSets<T>()) {
 	};

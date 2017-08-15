@@ -24,7 +24,7 @@ target_link_libraries(DataVisualizer  ${MAIN_LINK_LIBS} )
 install(TARGETS DataVisualizer DESTINATION //usr/local/share/DataVisualizer)
 
 #-------------------------------------------------------------------
-#OpenGl renderer build
+#OpenGl-glut renderer build
 
 file(GLOB SOURCESOPENGL "../src/Renderer_OpenGL_GLUT.cpp" )
 
@@ -32,3 +32,12 @@ add_library(RendererOpenGLGLUT SHARED ${SOURCESOPENGL})
 
 target_link_libraries(RendererOpenGLGLUT  ${MAIN_LINK_LIBS} -lglut )
 install(TARGETS RendererOpenGLGLUT DESTINATION //usr/local/share/DataVisualizer)
+
+#-------------------------------------------------------------------
+#Vulkan-glfw renderer build
+
+file(GLOB SOURCEVULKANGLFW "../src/Renderer_Vulkan_GLFW.cpp" )
+
+add_library(RendererVulkanGLFW SHARED ${SOURCEVULKANGLFW})
+
+target_link_libraries(RendererVulkanGLFW  ${MAIN_LINK_LIBS} -glfw3 -lvulkan )
