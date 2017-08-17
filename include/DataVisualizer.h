@@ -21,6 +21,7 @@ protected:
 private:
 	Renderer* _renderer;
 	bool init_opengl();
+	bool init_vulkan();
 	//std::unique_ptr<Plot*> test;
 	//std::vector<std::vector<std::unique_ptr<Plot>>> _plots;
 	std::size_t _columns;
