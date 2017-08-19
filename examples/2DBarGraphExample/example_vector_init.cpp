@@ -6,7 +6,7 @@
 namespace DV= DataVisualizer;
 int main(){
 	DV::DataVisualizer* VC=new DV::DataVisualizer();
-	if(VC->init()){
+	if(VC->init(DV::RE::OpenGL)){
 		std::cout<<"Init successful"<<std::endl;
 	}
 	else{

@@ -48,5 +48,5 @@ file(GLOB SOURCEVULKANGLFW "../src/renders/Renderer_Vulkan_GLFW.cpp" )
 
 add_library(RendererVulkanGLFW SHARED ${SOURCEVULKANGLFW})
 
-target_link_libraries(RendererVulkanGLFW  ${MAIN_LINK_LIBS} -L/usr/local/lib -lglfw3 -lrt -lm -ldl -lXrandr -lXinerama -lXxf86vm -lXext -lXcursor -lXrender -lXfixes -lX11 -lpthread -lxcb -lXau -lXdmcp -lvulkan )
+target_link_libraries(RendererVulkanGLFW  ${MAIN_LINK_LIBS} -L/usr/local/lib -lglfw3 -lrt -lm -ldl -lXrandr -lXinerama -lXxf86vm -lXext -lXcursor -lXrender -lXfixes -lX11 -lpthread -lxcb -lXau -lXdmcp -lvulkan -lboost_thread )
 

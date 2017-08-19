@@ -1,17 +1,20 @@
 #include "Renderer_Vulkan_GLFW.h"
 namespace DataVisualizer {
-RendererVulkanGLFW::RendererVulkanGLFW():window(NULL),mainthread(NULL) {
-run();
+RendererVulkanGLFW::RendererVulkanGLFW() :
+		window(NULL), mainthread(NULL), kill(false) {
+	run();
 }
 
 RendererVulkanGLFW::~RendererVulkanGLFW() {
+	kill = true;
+	mainthread->join();
 	cleanUp();
 }
 
 void RendererVulkanGLFW::run() {
-    initWindow();
-      initVulkan();
-      mainthread=new std::thread(std::bind(&RendererVulkanGLFW::mainLoop,this));
+	initWindow();
+	initVulkan();
+	mainthread = new boost::thread(&RendererVulkanGLFW::mainLoop, this);
 
 }
 
@@ -19,25 +22,24 @@ void RendererVulkanGLFW::initVulkan() {
 
 }
 void RendererVulkanGLFW::initWindow() {
-    glfwInit();
+	glfwInit();
 
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-    window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+	window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
 
 }
 
 void RendererVulkanGLFW::mainLoop() {
-	std::cout<<"mainloop started"<<std::endl;
-    while (!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
-    }
+	  while (!glfwWindowShouldClose(window)) {
+	     glfwPollEvents();
 
-}
-void RendererVulkanGLFW::cleanUp(){
-    glfwDestroyWindow(window);
+	  }}
 
-      glfwTerminate();
+void RendererVulkanGLFW::cleanUp() {
+	glfwDestroyWindow (window);
+
+	glfwTerminate();
 }
 }

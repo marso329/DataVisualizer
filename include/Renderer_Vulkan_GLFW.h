@@ -2,6 +2,9 @@
 #define DATAVISUALIZER_RENDERERVULKANGLFW_HEADER
 #include "Renderer.h"
 #include "Constants.h"
+#include <atomic>
+#include <thread>
+#include <boost/thread/thread.hpp>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -28,7 +31,8 @@ public:
 protected:
 private:
 	GLFWwindow* window;
-	std::thread* mainthread;
+	boost::thread* mainthread;
+	std::atomic<bool> kill;
 
 };
 extern "C" Renderer* create_Vulkan_GLFW() {

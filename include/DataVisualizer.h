@@ -8,11 +8,12 @@
 
 #include <dlfcn.h>
 namespace DataVisualizer {
+enum RE { OpenGL, Vulkan };
 class DataVisualizer {
 public:
 	DataVisualizer();
 	~DataVisualizer();
-	bool init();
+	bool init(const RE&);
 	template <typename T>
 	void insert_plot(Plot<T>* plot){
 

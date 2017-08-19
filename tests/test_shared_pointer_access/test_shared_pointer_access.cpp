@@ -13,7 +13,7 @@ int main(){
     std::random_device rd;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(1, 2);
-    assert(VC->init());
+    assert(VC->init(DV::RE::OpenGL));
 	float* data=(float*)malloc(256*sizeof(float));
 	for(int i=0;i<256;i++){
 		data[i]=dis(gen);
