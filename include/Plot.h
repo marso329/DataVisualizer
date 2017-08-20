@@ -5,9 +5,25 @@
 
 namespace DataVisualizer {
 
+
+
+enum TYPE {BOOL,CHAR,UNSIGNED_CHAR, SHORT, UNSIGNED_SHORT,INT,UNSIGNED,LONG,UNSIGNED_LONG,LONG_LONG,UNSIGNED_LONG_LONG,FLOAT,DOUBLE,LONG_DOUBLE,UNDEFINED };
+
+class PlotBase{
+public:
+	PlotBase(){
+
+	}
+	virtual ~PlotBase(){};
+protected:
+TYPE _type=UNDEFINED;
+private:
+
+};
+
 template<typename T>
-class Plot {
-	static_assert((std::is_integral<T>::value||std::is_floating_point<T>::value)&&!std::is_same<T, bool>::value, "T must inherit from list");
+class Plot:public PlotBase {
+	static_assert((std::is_integral<T>::value||std::is_floating_point<T>::value), "T must inherit from list");
 public:
 	explicit Plot():_datasets(new DataSets<T>()) {
 	};
@@ -26,6 +42,11 @@ public:
 	}
 protected:
 private:
+	void set_type(){
+		_type=UNDEFINED;
+	}
+
+
 	DataSets<T>* _datasets;
 };
 
