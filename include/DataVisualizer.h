@@ -16,6 +16,7 @@ public:
 	DataVisualizer();
 	~DataVisualizer();
 	bool init(const RE&);
+	void wait_for_window_to_close();
 	template<typename T>
 	void insert_plot(Plot<T>* plot) {
 		_plots.push_back(dynamic_cast<PlotBase*>(plot));

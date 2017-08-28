@@ -6,4 +6,9 @@ RendererOpenGLGLUT::RendererOpenGLGLUT() {
 
 RendererOpenGLGLUT::~RendererOpenGLGLUT(){
 }
+
+void RendererOpenGLGLUT::wait(){
+
 }
+}
+

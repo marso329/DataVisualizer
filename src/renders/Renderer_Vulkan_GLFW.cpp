@@ -19,6 +19,10 @@ void RendererVulkanGLFW::run() {
 
 }
 
+void RendererVulkanGLFW::wait(){
+	mainthread->join();
+}
+
 void RendererVulkanGLFW::initVulkan() {
 	createInstance();
 	setupDebugCallback();

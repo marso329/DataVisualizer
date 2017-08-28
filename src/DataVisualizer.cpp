@@ -28,6 +28,12 @@ bool DataVisualizer::init(const RE& r) {
 	}
 	};
 }
+void DataVisualizer::wait_for_window_to_close(){
+	if (_renderer != NULL) {
+		_renderer->wait();
+	}
+}
+
 bool DataVisualizer::init_opengl() {
 	void* rendererOpenGLLib = dlopen("../lib/libRendererOpenGLGLUT.so",
 			RTLD_LAZY);

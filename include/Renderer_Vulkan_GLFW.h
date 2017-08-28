@@ -92,6 +92,7 @@ public:
 	RendererVulkanGLFW();
 	~RendererVulkanGLFW();
 	void run();
+	void wait();
 	void initWindow();
 	void initVulkan();
 	void mainLoop();

@@ -17,8 +17,8 @@ FOREACH(subdir ${SUBDIRS})
   file(GLOB files ${subdir}/*)
   #same
   file(GLOB name ${subdir}/*.cpp)
-  #Remove every file that does not fit test_*.cpp
-  list(REMOVE_ITEM name !*test_*.cpp)
+  #Remove every file that does not fit example_*.cpp
+  list(REMOVE_ITEM name !*example_*.cpp)
   #remove the extension from the filename
   get_filename_component(MYFILE_WITHOUT_EXT ${name} NAME_WE)
   #create a executable

@@ -7,6 +7,7 @@ class RendererOpenGLGLUT: public Renderer {
 public:
 	RendererOpenGLGLUT();
 	~RendererOpenGLGLUT();
+	void wait();
 protected:
 private:
 

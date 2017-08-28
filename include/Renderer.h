@@ -19,6 +19,7 @@ public:
 			destroy_renderer(this);
 		}
 	}
+	virtual void wait()=0;
 protected:
 	destroy_t* destroy_renderer;
 private:
