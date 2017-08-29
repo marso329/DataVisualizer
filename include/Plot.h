@@ -45,8 +45,12 @@ private:
 	void set_type(){
 		_type=UNDEFINED;
 	}
-
-
+	float front_vertical_left_space=FVLSPACE;
+	float front_vertical_right_space=FVRSPACE;
+	float right_vertical_left_space=RVLSPACE;
+	float right_vertical_right_space=RVRSPACE;
+	float upper_space=USPACE;
+	float lower_space=LSPACE;
 	DataSets<T>* _datasets;
 };
 

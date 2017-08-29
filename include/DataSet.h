@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <cstring>
 #include <stdexcept>
+#include <atomic>
 
 inline std::size_t pow2roundup(std::size_t x) {
 	--x;
@@ -31,7 +32,7 @@ public:
 	DataSet() :
 			_size(0), _real_size(INITIAL_SIZE_DATASET), _data(
 					(T*) malloc(INITIAL_SIZE_DATASET * sizeof(T))), _shared_data(
-					_data,::free), _dirty(false) {
+					_data,::free), _dirty(false),update(false) {
 	}
 	;
 	//Copies the data in the vector into memory
@@ -39,7 +40,7 @@ public:
 			_size(data.size()), _real_size(data.size()), _data(
 					(T*) aligned_alloc(MEMORY_ALIGNMENT,
 							data.size() * sizeof(T))), _shared_data(_data,::free), _dirty(
-					false) {
+					false),update(true) {
 		std::copy(data.begin(), data.end(), _data);
 	}
 
@@ -47,7 +48,7 @@ public:
 	DataSet(T* data, std::size_t size) :
 			_size(size), _real_size(size), _data(
 					(T*) aligned_alloc(MEMORY_ALIGNMENT, size * sizeof(T))), _shared_data(
-					_data,::free), _dirty(false) {
+					_data,::free), _dirty(false),update(false) {
 		memcpy(_data, data, size * sizeof(T));
 	}
 
@@ -103,6 +104,12 @@ public:
 		memcpy(_data+offset,data,size*sizeof(T));
 		_dirty=true;
 	}
+	void enable_update(){
+		update=true;
+	}
+	void disable_update(){
+		update=false;
+	}
 
 
 protected:
@@ -123,6 +130,7 @@ private:
 	T* _data;
 	std::shared_ptr<T> _shared_data;
 	bool _dirty;
+	std::atomic<bool> update;
 };
 
 }
