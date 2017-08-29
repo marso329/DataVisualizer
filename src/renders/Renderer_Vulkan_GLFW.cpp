@@ -462,8 +462,8 @@ void RendererVulkanGLFW::createGraphicsPipeline() {
 	vertexInputInfo.sType =
 			VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 
-	auto bindingDescription = Vertex::getBindingDescription();
-	auto attributeDescriptions = Vertex::getAttributeDescriptions();
+	auto bindingDescription = getBindingDescription();
+	auto attributeDescriptions = getAttributeDescriptions();
 
 	vertexInputInfo.vertexBindingDescriptionCount = 1;
 	vertexInputInfo.vertexAttributeDescriptionCount =

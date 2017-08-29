@@ -11,6 +11,10 @@
 #include <stdexcept>
 #include <atomic>
 
+
+//own includes
+#include "Vertex.h"
+
 inline std::size_t pow2roundup(std::size_t x) {
 	--x;
 	x |= x >> 1;
@@ -41,7 +45,7 @@ public:
 					(T*) aligned_alloc(MEMORY_ALIGNMENT,
 							data.size() * sizeof(T))), _shared_data(_data,::free), _dirty(
 					false),update(true) {
-		std::copy(data.begin(), data.end(), _data);
+		std::copy(data.begin(), data.end(),_data);
 	}
 
 	//Copies the data from the pointer into memory
@@ -122,6 +126,10 @@ private:
 		_real_size = new_size;
 		_data = new_ptr;
 	}
+	void update_center_points(){
+		_center.resize(_size);
+	}
+
 	//numbers of element in series
 	std::size_t _size;
 	//numbers of allocated series
@@ -131,6 +139,7 @@ private:
 	std::shared_ptr<T> _shared_data;
 	bool _dirty;
 	std::atomic<bool> update;
+	std::vector<Vertex> _center;
 };
 
 }

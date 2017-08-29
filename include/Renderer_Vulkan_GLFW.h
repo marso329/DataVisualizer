@@ -2,6 +2,7 @@
 #define DATAVISUALIZER_RENDERERVULKANGLFW_HEADER
 #include "Renderer.h"
 #include "Constants.h"
+#include "Vertex.h"
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -44,11 +45,6 @@ struct SwapChainSupportDetails {
 	std::vector<VkPresentModeKHR> presentModes;
 };
 
-struct Vertex {
-	glm::vec3 pos;
-	glm::vec3 color;
-	glm::vec2 texCoord;
-
 	static VkVertexInputBindingDescription getBindingDescription() {
 		VkVertexInputBindingDescription bindingDescription = { };
 		bindingDescription.binding = 0;
@@ -79,7 +75,6 @@ struct Vertex {
 
 		return attributeDescriptions;
 	}
-};
 
 struct UniformBufferObject {
 	glm::mat4 model;
